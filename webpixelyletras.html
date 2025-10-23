@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PixelyLetras - Tu Portal de Noticias de Tecnología</title>
+    <meta name="description" content="PixelyLetras es tu portal de referencia sobre informática y tecnología. Encuentra noticias, opinión, análisis detallados y guías sobre IA, ciberseguridad, software y más.">
+    <meta name="keywords" content="blog, informática, tecnología, tutoriales, pc gaming, programación, ciberseguridad, ia, software, hardware, noticias tech">
+    <meta name="author" content="PixelyLetras">
+    <link rel="canonical" href="https://www.pixelyletras.com"> 
+
+    <meta property="og:title" content="PixelyLetras - Tu Portal de Noticias de Tecnología">
+    <meta property="og:description" content="Tu portal de referencia sobre informática y tecnología. Encuentra noticias, opinión y análisis detallados.">
+    <meta property="og:image" content="https://placehold.co/1200x630/4F46E5/FFFFFF?text=PixelyLetras">
+    <meta property="og:url" content="https://www.pixelyletras.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PixelyLetras - Tu Portal de Noticias de Tecnología">
+    <meta name="twitter:description" content="Tu portal de referencia sobre informática y tecnología. Encuentra noticias, opinión y análisis detallados.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/4F46E5/FFFFFF?text=PixelyLetras">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json" id="schema-json"></script>
+    
+    <style>
+        :root {
+            --dark-bg: #111827;
+            --light-bg: #f9fafb;
+            --gradient-start: #8A2BE2; /* Azul violeta */
+            --gradient-end: #4F46E5; /* Índigo */
+            --gradient-text-start: #6D28D9; /* Violeta oscuro */
+            --gradient-text-end: #4F46E5; /* Índigo */
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            background-color: var(--light-bg);
+            color: #374151;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, var(--gradient-text-start), var(--gradient-text-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.25); /* More transparent */
+            -webkit-backdrop-filter: blur(20px); /* For Safari */
+            backdrop-filter: blur(20px); /* More blur */
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* Softer shadow */
+            border-radius: 1rem; /* Add rounded corners */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        #article-content-view h2, #static-page-content h2 { font-size: 2rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1.25rem; color: var(--dark-bg); }
+        #article-content-view h3, #static-page-content h3 { font-size: 1.625rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--dark-bg); }
+        #article-content-view p, #static-page-content p { margin-bottom: 1rem; line-height: 1.75; }
+        #article-content-view ul, #static-page-content ul { margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: disc; }
+        #article-content-view li, #static-page-content li { margin-bottom: 0.5rem; }
+        #article-content-view a { font-weight: 600; background: linear-gradient(to right, var(--gradient-text-start), var(--gradient-text-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: underline; }
+        #article-content-view code { background-color: #e0e7ff; color: #4338ca; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: 'Fira Code', monospace; }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, var(--gradient-start), var(--gradient-end)) 1;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="bg-gray-900 shadow-lg sticky top-0 z-50 text-white">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#inicio" class="nav-link flex items-center space-x-2" data-page="inicio">
+                <svg class="w-9 h-9" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#8A2BE2"/>
+                            <stop offset="1" stop-color="#4F46E5"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 20H40V40H20V20Z" fill="url(#logo-gradient)"/>
+                    <path d="M20 45H40V65H20V45Z" fill="url(#logo-gradient)"/>
+                    <path d="M45 20H65V40H45V20Z" fill="url(#logo-gradient)"/>
+                    <path d="M45 45H65V65H45V45Z" fill="url(#logo-gradient)"/>
+                    <path d="M70 20H90V40H70V20Z" fill="url(#logo-gradient)"/>
+                </svg>
+                <span class="text-2xl font-black gradient-text">PixelyLetras</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="#categoria/noticias" class="nav-link text-gray-300 hover:text-white transition duration-300 font-semibold" data-page="noticias">Noticias</a>
+                <a href="#categoria/analisis" class="nav-link text-gray-300 hover:text-white transition duration-300 font-semibold" data-page="analisis">Análisis</a>
+                <a href="#categoria/ciberseguridad" class="nav-link text-gray-300 hover:text-white transition duration-300 font-semibold" data-page="ciberseguridad">Ciberseguridad</a>
+                <a href="#categoria/tutoriales" class="nav-link text-gray-300 hover:text-white transition duration-300 font-semibold" data-page="tutoriales">Guías</a>
+                 <a href="#contacto" class="nav-link text-gray-300 hover:text-white transition duration-300 font-semibold" data-page="contacto">Contacto</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                 <div class="relative hidden md:block">
+                    <input type="search" placeholder="Buscar..." class="bg-gray-800 border border-gray-700 text-white rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-48 transition-all duration-300">
+                    <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-gray-300 focus:outline-none p-2 rounded-md hover:bg-gray-700 transition duration-300">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pt-2 pb-4 border-t border-gray-800 bg-gray-900">
+             <a href="#inicio" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="inicio">Inicio</a>
+             <a href="#categoria/noticias" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="noticias">Noticias</a>
+             <a href="#categoria/analisis" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="analisis">Análisis</a>
+             <a href="#categoria/ciberseguridad" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="ciberseguridad">Ciberseguridad</a>
+             <a href="#categoria/tutoriales" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="tutoriales">Guías</a>
+             <a href="#contacto" class="nav-link block py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md px-3 transition" data-page="contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <main id="app-content" class="container mx-auto px-6 py-8"></main>
+
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <a href="#inicio" class="nav-link inline-flex items-center space-x-2" data-page="inicio">
+                        <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logo-gradient-footer" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#8A2BE2"/>
+                                    <stop offset="1" stop-color="#4F46E5"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 20H40V40H20V20Z" fill="url(#logo-gradient-footer)"/>
+                            <path d="M20 45H40V65H20V45Z" fill="url(#logo-gradient-footer)"/>
+                            <path d="M45 20H65V40H45V20Z" fill="url(#logo-gradient-footer)"/>
+                            <path d="M45 45H65V65H45V45Z" fill="url(#logo-gradient-footer)"/>
+                            <path d="M70 20H90V40H70V20Z" fill="url(#logo-gradient-footer)"/>
+                        </svg>
+                        <span class="text-2xl font-black gradient-text">PixelyLetras</span>
+                    </a>
+                    <p class="text-gray-400 mt-4 max-w-xs leading-relaxed">Explorando el universo digital, un pixel y una letra a la vez.</p>
+                </div>
+                 <div>
+                    <h3 class="text-lg font-bold text-white uppercase">Categorías</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#categoria/noticias" class="nav-link text-gray-400 hover:text-white transition" data-page="noticias">Noticias</a></li>
+                        <li><a href="#categoria/analisis" class="nav-link text-gray-400 hover:text-white transition" data-page="analisis">Análisis</a></li>
+                        <li><a href="#categoria/ciberseguridad" class="nav-link text-gray-400 hover:text-white transition" data-page="ciberseguridad">Ciberseguridad</a></li>
+                        <li><a href="#categoria/tutoriales" class="nav-link text-gray-400 hover:text-white transition" data-page="tutoriales">Guías</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#sobre-nosotros" class="nav-link text-gray-400 hover:text-white transition" data-page="sobre-nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#contacto" class="nav-link text-gray-400 hover:text-white transition" data-page="contacto">Contacto</a></li>
+                        <li><a href="#politica-privacidad" class="nav-link text-gray-400 hover:text-white transition" data-page="politica-privacidad">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-10 border-gray-700">
+            <p class="text-center text-gray-500 text-sm">&copy; 2025 PixelyLetras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const BASE_URL = "https://www.pixelyletras.com"; 
+
+        const articles = [
+            { id: 'futuro-ia', popularity: 95, category: 'Noticias', date: '2025-10-14', title: 'El futuro de la IA: ¿Qué nos espera en los próximos 5 años?', image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Un análisis profundo sobre las tendencias, avances y los posibles impactos de la inteligencia artificial en nuestra vida cotidiana y en la industria tecnológica.', content: `<h2>El Horizonte de la Inteligencia Artificial</h2><p>La inteligencia artificial (IA) ha dejado de ser un concepto de ciencia ficción para convertirse en una fuerza transformadora que moldea activamente nuestro presente y futuro. En este artículo, exploramos las áreas clave que, según los expertos, definirán el panorama de la IA durante el próximo lustro, alterando desde cómo trabajamos hasta cómo interactuamos con el mundo digital.</p><h3>1. IA Generativa Multimodal: Más Allá del Texto</h3><p>Los modelos de lenguaje como los que conocemos hoy son solo el principio. La próxima gran frontera es la IA generativa multimodal, sistemas capaces de comprender, procesar y generar contenido combinando fluidamente texto, imágenes, sonido y video. Imagina describir una escena con palabras y obtener un videoclip fotorrealista, o tararear una melodía y recibir una partitura orquestal completa. Esta tecnología no solo potenciará las industrias creativas, sino que también abrirá nuevas formas de interacción hombre-máquina mucho más intuitivas y naturales. Este avance es comparable en impacto a los hitos teóricos en la <a href="#articulo/avance-cuantica" class="internal-link" data-article-id="avance-cuantica">computación cuántica</a>, prometiendo una revolución en la creación de contenido.</p><h3>2. Hiper-personalización y Agentes Autónomos</h3><p>Los asistentes virtuales actuales evolucionarán hacia agentes de IA proactivos y autónomos. Estos agentes no solo responderán a nuestras órdenes, sino que anticiparán nuestras necesidades basándose en nuestros patrones de comportamiento, calendario y comunicaciones. Podrán, por ejemplo, reorganizar una agenda de reuniones automáticamente al detectar un conflicto, reservar un vuelo y hotel para un viaje de negocios basándose en preferencias pasadas, o incluso filtrar y resumir nuestro correo electrónico para presentarnos solo lo esencial. Esta capacidad predictiva y autónoma requerirá, por supuesto, una robusta infraestructura de <a href="#articulo/proteger-red-wifi" class="internal-link" data-article-id="proteger-red-wifi">seguridad digital</a> para proteger nuestra privacidad.</p><h3>3. Avances en la Ciencia y la Medicina</h3><p>La IA se está convirtiendo en una herramienta indispensable para la investigación científica. En los próximos años, veremos modelos de IA capaces de analizar conjuntos de datos masivos para acelerar el descubrimiento de nuevos fármacos, predecir estructuras de proteínas con una precisión sin precedentes (resolviendo problemas biológicos fundamentales) y modelar sistemas complejos como el cambio climático para encontrar soluciones más efectivas. La capacidad de la IA para identificar patrones que son invisibles para los humanos está destinada a provocar avances científicos a una velocidad nunca antes vista.</p><h3>4. Desafíos Éticos y Regulatorios</h3><p>Con un gran poder viene una gran responsabilidad. El rápido avance de la IA también intensificará el debate sobre sus implicaciones éticas. Cuestiones como el sesgo en los algoritmos, la pérdida de empleos por automatización, el uso de la IA en la vigilancia y la creación de 'deepfakes' realistas serán temas centrales. Esperamos ver un aumento en los esfuerzos por crear marcos regulatorios que garanticen un desarrollo y despliegue de la IA que sea seguro, justo y beneficioso para toda la humanidad. La transparencia y la explicabilidad de los modelos de IA (XAI - Explainable AI) serán campos de investigación cruciales.</p>` },
+            { id: 'montar-pc-gaming-2025', popularity: 88, category: 'Tutoriales', date: '2025-10-12', title: 'Guía completa para montar tu PC gaming en 2025', image: 'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Te guiamos paso a paso en la elección de componentes y el ensamblaje de tu ordenador ideal para jugar con el mejor rendimiento.', content: `<h2>Construye tu Bestia Gaming: Guía Definitiva 2025</h2><p>Montar tu propio PC no solo es una experiencia increíblemente gratificante, sino que te permite tener un control total sobre el rendimiento, la estética y el presupuesto de tu máquina. A diferencia de un equipo pre-montado, cada pieza es elegida por ti para crear un ordenador a medida. Esta guía te llevará a través de todo el proceso, desde la selección de componentes hasta el primer arranque.</p><h3>Paso 1: La Elección Inteligente de Componentes</h3><p>Esta es la fase más crucial. Una elección equilibrada es la clave del éxito.</p><ul><li><strong>CPU (Procesador):</strong> El cerebro de tu PC. Para gaming, busca procesadores con altas velocidades de reloj y un buen número de núcleos. Las gamas Intel Core i5/i7 o AMD Ryzen 5/7 suelen ofrecer el mejor equilibrio entre precio y rendimiento.</li><li><strong>GPU (Tarjeta Gráfica):</strong> El componente más importante para jugar. Determinará la resolución y la tasa de fotogramas a la que podrás jugar. Investiga las últimas series de NVIDIA (GeForce RTX) y AMD (Radeon RX) para encontrar la que se ajuste a tu presupuesto.</li><li><strong>Placa Base (Motherboard):</strong> La columna vertebral que conecta todo. Asegúrate de que sea compatible con tu CPU (socket) y que tenga suficientes puertos y ranuras para tus necesidades (M.2, USB, etc.).</li><li><strong>Memoria RAM:</strong> Para el gaming en 2025, 16 GB es el mínimo recomendado, pero 32 GB te darán más holgura para el futuro. Busca velocidades altas (DDR5 a más de 5000MHz) con bajas latencias.</li><li><strong>Almacenamiento:</strong> Un SSD NVMe es imprescindible para el sistema operativo y tus juegos favoritos por sus velocidades de carga ultrarrápidas. Puedes complementarlo con un SSD SATA de mayor capacidad para otros archivos.</li><li><strong>Fuente de Alimentación (PSU):</strong> No escatimes aquí. Una fuente de calidad (80 Plus Bronze o superior) y con suficiente potencia (W) garantizará la estabilidad y seguridad de todo tu sistema.</li></ul><h3>Paso 2: El Ensamblaje Paso a Paso</h3><p>Con todos los componentes listos, llega el momento de la verdad. Trabaja sobre una superficie limpia y no conductora.</p><p>El proceso general es: instalar la CPU y la RAM en la placa base fuera de la caja, montar la placa base dentro de la caja, instalar la tarjeta gráfica y el resto de componentes, y finalmente, conectar todos los cables de alimentación y datos. La gestión del cableado (cable management) no solo mejora la estética, sino también el flujo de aire.</p><h3>Paso 3: Software y Puesta a Punto</h3><p>Una vez montado, el trabajo no ha terminado. Deberás instalar el sistema operativo (Windows, Linux), actualizar todos los drivers, especialmente los de la tarjeta gráfica, e instalar tu software esencial. Una vez hecho, es crucial <a href="#articulo/proteger-red-wifi" class="internal-link" data-article-id="proteger-red-wifi">proteger tu nueva máquina</a> y tu red para disfrutar de tus juegos online de forma segura.</p><p>¡Enhorabuena! Has construido una máquina potente y personalizada, lista para ofrecerte incontables horas de diversión.</p>` },
+            { id: 'ataque-ransomware-global', popularity: 98, category: 'Ciberseguridad', date: '2025-10-11', title: 'Análisis del último ataque de ransomware a escala global', image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Expertos desglosan el vector de ataque y las medidas de mitigación para la nueva cepa de ransomware que afecta a miles de empresas.', content: `<h2>Alerta Roja Digital: "CyberLock" Golpea a Nivel Mundial</h2><p>Una nueva y sofisticada variante de ransomware, denominada por los expertos como "CyberLock", ha causado estragos en las últimas 48 horas, paralizando los sistemas informáticos de miles de empresas e instituciones públicas en más de 30 países. Analizamos en profundidad este ciberataque y cómo protegerse.</p><h3>Vector de Infección y Propagación</h3><p>A diferencia de otros ataques, "CyberLock" utiliza un enfoque de doble vector. La puerta de entrada principal sigue siendo el correo de phishing altamente personalizado (spear-phishing), que engaña a los empleados para que ejecuten una macro maliciosa en un documento aparentemente legítimo. Una vez dentro de la red, el malware explota una vulnerabilidad recente en servicios de red para propagarse lateralmente de forma autónoma, infectando otros equipos sin necesidad de interacción humana. Esta capacidad de "gusano" es lo que ha permitido su rápida expansión.</p><h3>Anatomía del Malware</h3><p>CyberLock utiliza un cifrado robusto AES-256 para bloquear los archivos, haciéndolos irrecuperables sin la clave privada. Además, incorpora una táctica de doble extorsión: no solo cifra los datos, sino que también los exfiltra a servidores controlados por los atacantes. Amenazan con hacer pública la información confidencial si no se paga el rescate, lo que añade una enorme presión a las víctimas.</p><h3>¿Cómo Protegerse de "CyberLock" y Futuras Amenazas?</h3><p>La prevención es la mejor defensa. Los expertos recomiendan una estrategia de seguridad por capas:</p><ul><li><strong>Formación de Empleados:</strong> La primera línea de defensa es un usuario bien informado. Es crucial realizar formaciones continuas para reconocer intentos de phishing.</li><li><strong>Copias de Seguridad Inmutables:</strong> Implementar la regla 3-2-1 (tres copias, en dos medios distintos, una de ellas offline o inmutable) es vital para poder restaurar los datos sin pagar el rescate.</li><li><strong>Segmentación de Red:</strong> Dividir la red en segmentos más pequeños puede contener la propagación lateral del malware, limitando el daño.</li><li><strong>Sistemas de Detección y Respuesta (EDR):</strong> Un antivirus tradicional no es suficiente. Las soluciones EDR monitorizan el comportamiento de los sistemas para detectar y detener actividades sospechosas antes de que se complete el cifrado.</li></ul><p>Este ataque es un recordatorio contundente de que la <a href="#articulo/proteger-red-wifi" class="internal-link" data-article-id="proteger-red-wifi">ciberseguridad</a> es un proceso continuo y no un producto que se compra una sola vez.</p>` },
+            { id: 'mejores-editores-codigo-2025', popularity: 85, category: 'Análisis', date: '2025-10-10', title: 'Los mejores editores de código para programadores en 2025', image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Comparamos las herramientas más populares como VS Code, JetBrains y Zed para que encuentres la que mejor se adapta a tu flujo de trabajo.', content: `<h2>El Arsenal del Desarrollador: Top Editores de Código en 2025</h2><p>La elección de un editor de código es una de las decisiones más personales y cruciales para un programador. Es nuestra principal herramienta de trabajo, y la correcta puede potenciar drásticamente la productividad y la comodidad. En 2025, el ecosistema de editores es más vibrante que nunca. Aquí tienes nuestra selección de los mejores.</p><h3>1. Visual Studio Code (VS Code) - El Estándar de Oro</h3><p>No es ninguna sorpresa que VS Code siga siendo el rey indiscutible. Su combinación de ligereza, potencia y un gigantesco ecosistema de extensiones lo hace imbatible para la mayoría de los desarrolladores. Ya sea que trabajes en desarrollo web, ciencia de datos o <a href="#articulo/futuro-ia" class="internal-link" data-article-id="futuro-ia">inteligencia artificial</a>, hay una extensión para todo. Funciones como IntelliSense, la integración con Git y un terminal incorporado lo convierten en una solución todo en uno extremadamente eficiente.</p><h3>2. JetBrains IDEs (IntelliJ, PyCharm, etc.) - La Potencia Especializada</h3><p>Si buscas la experiencia más completa y potente para un lenguaje específico, la suite de JetBrains es insuperable. IntelliJ IDEA para Java, PyCharm para Python, WebStorm para JavaScript... cada uno de ellos ofrece herramientas de refactorización, análisis de código y depuración que son, sencillamente, las mejores del mercado. Aunque son de pago y consumen más recursos que VS Code, la inversión a menudo se justifica por el aumento de productividad que proporcionan en entornos profesionales.</p><h3>3. Zed - El Retador Ultrarrápido</h3><p>Zed ha irrumpido en escena con una promesa clara: velocidad. Escrito en Rust por los creadores de Atom, se enfoca en un rendimiento extremo y una latencia mínima, desde el arranque hasta la escritura. Además, está diseñado desde cero para la colaboración en tiempo real, permitiendo a varios desarrolladores trabajar en la misma base de código de forma simultánea, como en un Google Docs para programadores. Es una opción fantástica para quienes valoran el rendimiento por encima de todo.</p><h3>4. Neovim - Para los Amantes del Terminal</h3><p>Para aquellos que viven en la línea de comandos, Neovim (una bifurcación moderna de Vim) sigue siendo una opción de élite. Su curva de aprendizaje es pronunciada, ya que se basa en la edición modal y atajos de teclado. Sin embargo, una vez dominado, la velocidad de edición y la eficiencia son inigualables. Con una comunidad activa que crea plugins en Lua, Neovim es más configurable y potente que nunca, permitiendo crear un entorno de desarrollo completamente personalizado y minimalista.</p>` },
+            { id: 'proteger-red-wifi', popularity: 92, category: 'Ciberseguridad', date: '2025-10-08', title: 'Cómo proteger tu red WiFi de intrusos y ataques', image: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Consejos prácticos y sencillos para mejorar la seguridad de tu conexión a internet en casa y proteger tus datos personales.', content: `<h2>Fortaleza Digital: 5 Pasos para Blindar tu Red WiFi Doméstica</h2><p>Tu red WiFi es la puerta de entrada principal a tu vida digital. A través de ella pasan tus conversaciones, datos bancarios y secretos personales. Dejarla sin protección es como dejar la puerta de tu casa abierta. Protegerla es fundamental y más fácil de lo que crees. Sigue estos pasos esenciales para crear una red segura y robusta.</p><h3>1. Cambia las Credenciales por Defecto del Router</h3><p>Es el primer y más importante paso. La mayoría de los routers vienen con un usuario y contraseña genéricos (como "admin"/"admin") que son de conocimiento público. Un atacante siempre probará estas credenciales primero. Accede a la configuración de tu router (normalmente a través de una dirección como <code>192.168.1.1</code> en tu navegador) y establece una contraseña fuerte y única para el panel de administración.</p><h3>2. Usa Cifrado WPA3 (o WPA2-AES como mínimo)</h3><p>El cifrado es lo que codifica la información que viaja por tu red para que nadie pueda espiarla. Asegúrate de que tu red esté usando el estándar más moderno y seguro: WPA3. Si tu router no lo soporta, WPA2 con cifrado AES sigue siendo una opción segura. Evita a toda costa los estándares antiguos como WEP o WPA, ya que son extremadamente vulnerables.</p><h3>3. Desactiva WPS (Wi-Fi Protected Setup)</h3><p>WPS es una función diseñada para facilitar la conexión de dispositivos mediante un PIN o un botón. Aunque es conveniente, se ha demostrado que tiene graves vulnerabilidades de seguridad que pueden permitir a un atacante obtener tu contraseña en cuestión de horas. Es mucho más seguro desactivar esta función en la configuración de tu router.</p><h3>4. Crea una Red de Invitados</h3><p>Casi todos los routers modernos ofrecen la opción de crear una red WiFi secundaria para invitados. Esta red proporciona acceso a Internet, pero mantiene a los dispositivos conectados a ella completamente aislados de tu red principal y de tus propios dispositivos (ordenadores, móviles, etc.). Esto es perfecto para cuando tienes visitas en casa, protegiendo tu red de posibles dispositivos infectados.</p><h3>5. Mantén el Firmware del Router Actualizado</h3><p>Al igual que tu ordenador o tu móvil, tu router tiene su propio software (firmware) que necesita ser actualizado. Los fabricantes publican actualizaciones para corregir fallos de seguridad y mejorar el rendimiento. Revisa periódicamente la web del fabricante o la configuración del router para asegurarte de que tienes la última versión instalada. Esta simple acción puede protegerte de los últimos <a href="#articulo/ataque-ransomware-global" class="internal-link" data-article-id="ataque-ransomware-global">ataques y vulnerabilidades</a>.</p>` },
+            { id: 'avance-cuantica', popularity: 70, category: 'Noticias', date: '2025-10-05', title: 'Avance en computación cuántica promete revolucionar la ciencia', image: 'https://images.pexels.com/photos/256369/pexels-photo-256369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', summary: 'Un equipo internacional ha logrado un hito en la corrección de errores cuánticos, un paso crucial para construir ordenadores cuánticos a gran escala.', content: `<h2>El Salto Cuántico: Corrigen Erros y Abren la Puerta a Ordenadores a Gran Escala</h2><p>La computación cuántica, esa disciplina que promete revolucionar la informática tal y como la conocemos, siempre se ha enfrentado a un enemigo formidable: la decoherencia. Los cúbits, las unidades básicas de la información cuántica, son extremadamente frágiles y pierden sus propiedades cuánticas al interactuar con el entorno, generando errores que invalidan los cálculos. Sin embargo, un reciente avance publicado en la revista Nature podría cambiar las reglas del juego para siempre.</p><h3>El Hito: Códigos de Corrección de Errores Cuánticos</h3><p>Un equipo de investigación internacional ha demostrado por primera vez la capacidad de un sistema cuántico para detectar y corregir sus propios errores en tiempo real. Utilizando un procesador de 16 cúbits, implementaron un sofisticado código de corrección de errores cuánticos (QECC). Este sistema utiliza cúbits adicionales para monitorizar el estado de los cúbits de datos, identificar cuándo ocurre un error debido a la decoherencia y aplicar operaciones para revertirlo, todo ello sin destruir la frágil información cuántica.</p><h3>Aplicaciones Potenciales y el Futuro</h3><p>Este hito es fundamental porque demuestra que es posible construir sistemas cuánticos tolerantes a fallos, un requisito indispensable para escalar la tecnología. Las aplicaciones de un ordenador cuántico a gran escala son revolucionarias:</p><ul><li><strong>Diseño de Fármacos y Materiales:</strong> Simular moléculas a nivel cuántico para crear nuevos medicamentos y materiales con propiedades extraordinarias.</li><li><strong>Finanzas:</strong> Optimizar estrategias de inversión y analizar riesgos con una complejidad inabordable para los ordenadores clásicos.</li><li><strong>Inteligencia Artificial:</strong> Potenciar algoritmos de machine learning, un campo que ya está siendo transformado por la <a href="#articulo/futuro-ia" class="internal-link" data-article-id="futuro-ia">Inteligencia Artificial</a> clásica.</li></ul><p>Aunque todavía estamos a años de distancia de tener ordenadores cuánticos de uso general, este avance representa un paso de gigante, convirtiendo un obstáculo que parecía insuperable en un desafío de ingeniería que ya hemos comenzado a resolver.</p>` }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const appContent = document.getElementById('app-content');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+            // ... (funciones updateMetaTags y updateSchema sin cambios) ...
+            const updateMetaTags = (title, description, imageUrl, url) => { 
+                document.title = title;
+                document.querySelector('meta[name="description"]').setAttribute('content', description);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', url);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+                document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+                document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
+                document.querySelector('meta[name="twitter:description"]').setAttribute('content', description);
+                document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+            };
+            const updateSchema = (article) => { 
+                const schemaContainer = document.getElementById('schema-json');
+                if (article) {
+                    const schema = {
+                        "@context": "https://schema.org", "@type": "BlogPosting",
+                        "headline": article.title, "description": article.summary, "image": article.image,
+                        "author": { "@type": "Organization", "name": "PixelyLetras" },
+                        "publisher": { "@type": "Organization", "name": "PixelyLetras", "logo": { "@type": "ImageObject", "url": "https://placehold.co/600x60/4F46E5/FFFFFF?text=PixelyLetras" } },
+                        "datePublished": article.date, "dateModified": article.date,
+                        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/#articulo/${article.id}` }
+                    };
+                    schemaContainer.textContent = JSON.stringify(schema);
+                } else { schemaContainer.textContent = ''; }
+            };
+
+
+            const createHeroCard = (article) => `
+                <a href="#articulo/${article.id}" class="internal-link block group relative rounded-xl overflow-hidden shadow-2xl mb-8 card" data-article-id="${article.id}">
+                    <img src="${article.image}" alt="${article.title}" class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <div class="glassmorphism p-6 text-white">
+                             <span class="gradient-bg text-white text-xs font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">${article.category}</span>
+                             <h2 class="text-3xl lg:text-4xl font-extrabold leading-tight" style="text-shadow: 2px 2px 6px rgba(0,0,0,0.7)">${article.title}</h2>
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            const createSmallCard = (article) => `
+                <article class="card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group">
+                    <div class="overflow-hidden">
+                        <a href="#articulo/${article.id}" class="internal-link" data-article-id="${article.id}">
+                            <img src="${article.image}" alt="${article.title}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                        </a>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <span class="text-indigo-600 text-xs font-bold uppercase">${article.category}</span>
+                        <h3 class="text-lg font-bold mt-1 mb-2 flex-grow">
+                            <a href="#articulo/${article.id}" class="internal-link" data-article-id="${article.id}">${article.title}</a>
+                        </h3>
+                        <a href="#articulo/${article.id}" class="internal-link text-sm font-bold gradient-text self-start" data-article-id="${article.id}">Leer más &rarr;</a>
+                    </div>
+                </article>
+            `;
+            
+            const renderHomePage = () => {
+                updateMetaTags('PixelyLetras - Tu Portal de Noticias de Tecnología', 'Tu portal de referencia sobre informática y tecnología.', articles[0].image, `${BASE_URL}`);
+                updateSchema(null);
+                
+                const sortedArticles = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+                const heroArticle = sortedArticles[0];
+                const otherArticles = sortedArticles.slice(1);
+
+                appContent.innerHTML = `
+                    <div class="lg:flex lg:space-x-8">
+                        <div class="lg:w-2/3">
+                            ${createHeroCard(heroArticle)}
+                            <h2 class="section-title">Últimas Noticias</h2>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                ${otherArticles.map(createSmallCard).join('')}
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 mt-12 lg:mt-0">
+                            ${renderSidebar()}
+                        </div>
+                    </div>
+                `;
+            };
+            
+            const renderCategoryPage = (category) => {
+                const categoryArticles = articles.filter(a => a.category.toLowerCase() === category.toLowerCase());
+                const articlesHTML = categoryArticles.map(createSmallCard).join('');
+                
+                updateMetaTags(`${category} | PixelyLetras`, `Explora nuestros artículos y ${category.toLowerCase()} sobre tecnología.`, categoryArticles.length > 0 ? categoryArticles[0].image : '', `${BASE_URL}/#categoria/${category.toLowerCase()}`);
+                updateSchema(null);
+                
+                const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+                appContent.innerHTML = `
+                    <h1 class="section-title">${capitalizedCategory}</h1>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${articlesHTML}</div>`;
+            };
+            
+            const renderArticlePage = (articleId) => {
+                const article = articles.find(a => a.id === articleId);
+                if (!article) { router(); return; }
+                updateMetaTags(`${article.title} | PixelyLetras`, article.summary, article.image, `${BASE_URL}/#articulo/${article.id}`);
+                updateSchema(article);
+
+                appContent.innerHTML = `
+                     <div class="lg:flex lg:space-x-12">
+                        <article class="lg:w-2/3 bg-white p-6 sm:p-8 rounded-xl shadow-2xl">
+                            <header class="border-b pb-4 mb-6">
+                                <span class="gradient-bg text-white text-xs font-bold uppercase px-3 py-1 rounded-full">${article.category}</span>
+                                <h1 class="text-4xl font-extrabold mt-4 mb-2 leading-tight">${article.title}</h1>
+                                <p class="text-gray-500 text-sm mb-4">Publicado el ${new Date(article.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                <button id="summarize-btn" data-article-id="${article.id}" class="gradient-bg text-white font-bold py-2 px-5 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    <span>✨ Resumir con IA</span>
+                                </button>
+                            </header>
+                            <div id="ai-summary-container" class="hidden my-6"></div>
+                            <img src="${article.image}" alt="${article.title}" class="w-full rounded-lg mb-8 shadow-md">
+                            <div id="article-content-view" class="prose max-w-none">${article.content}</div>
+                        </article>
+                        <aside class="lg:w-1/3 mt-12 lg:mt-0">
+                            ${renderSidebar()}
+                        </aside>
+                    </div>`;
+            };
+
+            const renderSidebar = () => {
+                const mostRead = [...articles].sort((a,b) => b.popularity - a.popularity).slice(0, 4);
+                return `
+                    <div class="sticky top-28 space-y-8">
+                        <div class="glassmorphism p-6">
+                            <h3 class="font-bold text-lg mb-4 text-gray-800 border-b pb-2 border-gray-400/50">Lo más leído</h3>
+                            <ul class="space-y-4">
+                                ${mostRead.map(article => `
+                                <li>
+                                    <a href="#articulo/${article.id}" class="internal-link group flex items-center space-x-3" data-article-id="${article.id}">
+                                        <img src="${article.image}" class="w-16 h-16 object-cover rounded-md flex-shrink-0">
+                                        <span class="font-semibold text-gray-800 group-hover:gradient-text transition-all">${article.title}</span>
+                                    </a>
+                                </li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="ad-placeholder h-64 w-full rounded-xl shadow-md"><p>Anuncio Vertical</p></div>
+                    </div>`;
+            }
+            
+            const renderStaticPage = (page) => {
+                 let title = '';
+                 let content = '';
+
+                 if(page === 'sobre-nosotros') {
+                     title = 'Sobre Nosotros';
+                     content = `
+                        <div id="static-page-content" class="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
+                            <h2 class="gradient-text font-extrabold text-3xl mb-6">Nuestra Misión</h2>
+                            <p>En PixelyLetras, nuestra misión es desmitificar la tecnología y hacerla accesible para todos. Nacimos de la pasión por la innovación y el deseo de compartir conocimiento. Creemos que en el mundo digital actual, entender la tecnología no es un lujo, sino una necesidad.</p>
+                            <p>Desde análisis en profundidad de los últimos componentes de hardware hasta guías paso a paso para proteger tu vida digital, nuestro objetivo es ser tu fuente de información confiable, clara y precisa.</p>
+                            <h3 class="font-bold text-2xl mt-8 mb-4">¿Quiénes Somos?</h3>
+                            <p>Somos un equipo de entusiastas, programadores, analistas de seguridad y gamers que vivimos y respiramos tecnología. Cada artículo que publicamos es el resultado de horas de investigación, pruebas y, sobre todo, una pasión genuina por lo que hacemos. Queremos que cada lector no solo aprenda algo nuevo, sino que también se sienta inspirado por las posibilidades que la tecnología nos ofrece.</p>
+                        </div>
+                     `;
+                 } else if (page === 'politica-privacidad') {
+                     title = 'Política de Privacidad';
+                     content = `
+                        <div id="static-page-content" class="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
+                            <h2 class="gradient-text font-extrabold text-3xl mb-6">Política de Privacidad</h2>
+                            <p><strong>Última actualización:</strong> 18 de Octubre de 2025</p>
+                            <p>En PixelyLetras, la privacidad de nuestros visitantes es de extrema importancia para nosotros. Este documento de política de privacidad describe los tipos de información personal que se reciben y recopilan y cómo se utilizan.</p>
+                            <h3 class="font-bold text-2xl mt-8 mb-4">Archivos de Registro</h3>
+                            <p>Como muchos otros sitios web, PixelyLetras hace uso de archivos de registro. La información dentro de los archivos de registro incluye direcciones de protocolo de Internet (IP), tipo de navegador, proveedor de servicios de Internet (ISP), sello de fecha/hora, páginas de referencia/salida y número de clics para analizar tendencias, administrar el sitio, rastrear el movimiento del usuario por el sitio y recopilar información demográfica.</p>
+                            <h3 class="font-bold text-2xl mt-8 mb-4">Cookies y Web Beacons</h3>
+                            <p>PixelyLetras utiliza cookies para almacenar información sobre las preferencias de los visitantes, registrar información específica del usuario sobre qué páginas accede o visita el usuario, personalizar el contenido de la página web según el tipo de navegador de los visitantes u otra información que el visitante envía a través de su navegador.</p>
+                            <h3 class="font-bold text-2xl mt-8 mb-4">DoubleClick DART Cookie</h3>
+                            <p>Google, como proveedor externo, utiliza cookies para publicar anuncios en PixelyLetras. El uso de la cookie DART por parte de Google le permite publicar anuncios a los usuarios en función de su visita a PixelyLetras y otros sitios en Internet. Los usuarios pueden optar por no usar la cookie de DART visitando la política de privacidad de la red de contenido y anuncios de Google en la siguiente URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a></p>
+                        </div>
+                     `;
+                 }
+
+                 appContent.innerHTML = `
+                    <h1 class="section-title">${title}</h1>
+                    ${content}
+                 `;
+            }
+
+            const renderContactPage = () => {
+                updateMetaTags('Contacto | PixelyLetras', 'Contacta con el equipo de PixelyLetras.', 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', `${BASE_URL}/#contacto`);
+                updateSchema(null);
+
+                appContent.innerHTML = `
+                    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-2xl fade-in">
+                        <div class="text-center mb-12">
+                            <h1 class="text-4xl font-extrabold mb-4"><span class="gradient-text">Hablemos de Tecnología</span></h1>
+                            <p class="text-lg text-gray-600">¿Tienes alguna pregunta, sugerencia o quieres colaborar? Rellena el formulario y te responderemos lo antes posible.</p>
+                        </div>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-800 font-semibold mb-2">Nombre</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-800 font-semibold mb-2">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-800 font-semibold mb-2">Mensaje</label>
+                                <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full gradient-bg text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">Enviar Mensaje</button>
+                        </form>
+                        <p id="form-feedback" class="text-center mt-6 text-green-600 font-medium"></p>
+                    </div>
+                `;
+            };
+            
+            const router = () => {
+                appContent.classList.remove('fade-in');
+                const hash = window.location.hash.substring(1) || 'inicio';
+                const [path, param] = hash.split('/');
+                
+                requestAnimationFrame(() => {
+                    const categories = ['tutoriales', 'noticias', 'analisis', 'ciberseguridad'];
+                    if (path === 'articulo' && param) renderArticlePage(param);
+                    else if (path === 'categoria' && categories.includes(param)) renderCategoryPage(param);
+                    else if (path === 'contacto') renderContactPage();
+                    else if (path === 'sobre-nosotros') renderStaticPage('sobre-nosotros');
+                    else if (path === 'politica-privacidad') renderStaticPage('politica-privacidad');
+                    else renderHomePage();
+                    
+                    appContent.classList.add('fade-in');
+                    addEventListenersToLinks();
+                    window.scrollTo(0, 0);
+                });
+            };
+            
+            const callGeminiAPI = async (prompt) => {
+                const apiKey = ""; // Leave empty, will be handled by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        return candidate.content.parts[0].text;
+                    } else {
+                        console.error("Unexpected API response structure:", result);
+                        throw new Error("No se pudo extraer el contenido del resumen.");
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    throw error; // Re-throw to be caught by summarizeArticle
+                }
+            };
+
+            const summarizeArticle = async (articleId) => {
+                const article = articles.find(a => a.id === articleId);
+                if (!article) return;
+
+                const summaryContainer = document.getElementById('ai-summary-container');
+                const summarizeBtn = document.getElementById('summarize-btn');
+                summarizeBtn.disabled = true;
+                summaryContainer.innerHTML = `
+                    <div class="bg-indigo-100 border-l-4 border-indigo-500 text-indigo-700 p-4 rounded-lg">
+                        <p class="font-bold">Generando resumen con IA...</p>
+                        <p>Esto puede tardar unos segundos.</p>
+                    </div>`;
+                summaryContainer.classList.remove('hidden');
+
+                try {
+                    // Remove HTML tags for a cleaner prompt
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = article.content;
+                    const cleanContent = tempDiv.textContent || tempDiv.innerText || "";
+                    
+                    const prompt = `Resume el siguiente artículo de tecnología en un párrafo conciso y fácil de entender:\n\n"${cleanContent}"`;
+                    const summaryText = await callGeminiAPI(prompt);
+
+                    summaryContainer.innerHTML = `
+                        <div class="bg-indigo-100 border-l-4 border-indigo-500 text-indigo-800 p-6 rounded-lg shadow-md">
+                            <h3 class="font-extrabold text-xl mb-3 gradient-text">Resumen por IA</h3>
+                            <p class="text-base">${summaryText}</p>
+                        </div>`;
+                } catch (error) {
+                    summaryContainer.innerHTML = `
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg">
+                            <p class="font-bold">Error</p>
+                            <p>No se pudo generar el resumen. Por favor, inténtalo de nuevo más tarde.</p>
+                        </div>`;
+                    console.error('Error summarizing article:', error);
+                } finally {
+                    summarizeBtn.disabled = false;
+                }
+            };
+
+            const addEventListenersToLinks = () => {
+                 document.querySelectorAll('.nav-link, .internal-link').forEach(link => {
+                    link.onclick = (e) => {
+                        e.preventDefault();
+                        const href = link.getAttribute('href');
+                        if (window.location.hash !== href) {
+                            history.pushState(null, '', href);
+                            router();
+                        }
+                        mobileMenu.classList.add('hidden');
+                    };
+                });
+
+                const summarizeBtn = document.getElementById('summarize-btn');
+                if(summarizeBtn) {
+                    summarizeBtn.addEventListener('click', () => {
+                        summarizeArticle(summarizeBtn.dataset.articleId);
+                    });
+                }
+
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const feedback = document.getElementById('form-feedback');
+                        feedback.textContent = '¡Gracias por tu mensaje! Hemos recibido tus comentarios. (Esto es una demostración)';
+                        feedback.className = 'text-center mt-6 text-green-600 font-bold';
+                        contactForm.reset();
+                    });
+                }
+            };
+            
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            window.addEventListener('hashchange', router);
+            router();
+        });
+    </script>
+</body>
+</html>
+
